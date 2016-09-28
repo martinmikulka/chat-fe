@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/martinmikulka/chat-fe/issues"
   },
-  "homepage": "https://github.com/martinmikulka/chat-fe#readme"
+  "homepage": "https://github.com/martinmikulka/chat-fe#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
