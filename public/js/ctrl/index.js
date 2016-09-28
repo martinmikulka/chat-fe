@@ -36,7 +36,7 @@ App.Ctrl.Index.prototype.loginSuccess = function (data, status, xhr) {
 			this.formLogin.children('.errmsg').append('<p>Incorrect password.</p>');
 		}
 	} else {
-		this.formLogin.children('.errmsg').append('<p>Login successful.</p>');
+		$('body').load('/chat');
 	}
 };
 
