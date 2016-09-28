@@ -24,13 +24,39 @@ Ctrl.login = function (req, res) {
 	options.path = '/user/login';
 	options.method = 'POST';
 
+	var out = {
+		errors: []
+	};
+
+	/**
+	 * User input validation
+	 */
+	if (!req.body.username) {
+		out.errors.push('E_USERNAME_EMPTY');
+	}
+	if (!req.body.password) {
+		out.errors.push('E_PASSWORD_EMPTY');
+	}
+	if (out.errors.length) {
+		res.end(JSON.stringify(out));
+		return;
+	}
+
 	var request = http.request(options, function (response) {
 		var body = '';
 		response.on('data', function (data) {
 			body += data;
 		});
 		response.on('end', function () {
-			res.json(body);
+			body = JSON.parse(body);
+			if (body.errors) {
+				out.errors = body.errors;
+			} else {
+				// TODO Process logged-in user.
+			}
+
+			res.end(JSON.stringify(out));
+			return;
 		});
 	});
 
