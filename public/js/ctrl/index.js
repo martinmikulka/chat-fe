@@ -11,7 +11,10 @@ App.Ctrl.Index.prototype.login = function (ev) {
 	var method = this.formLogin.attr('method') || 'get';
 	$.ajax({
 		url: url,
-		method: method
+		method: method,
+		data: this.formLogin.serialize(),
+		success: function () {},
+		error: function () {}
 	});
 	return false;
 }
