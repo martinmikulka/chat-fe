@@ -5,6 +5,28 @@ App.Ctrl.Chat = function (opts) {
 	this.socket;
 	this.elements;
 	this.init(opts);
+
+	this.btnLogout = $('#BtnLogout');
+	this.btnLogout.on('click', this.logoutSubmit.bind(this));
+};
+
+App.Ctrl.Chat.prototype.logoutSubmit = function () {
+	$.ajax({
+		url: '/user/logout',
+		method: 'get',
+		success: this.logoutSuccess.bind(this),
+		error: this.logoutError.bind(this)
+	});
+	return false;
+};
+
+App.Ctrl.Chat.prototype.logoutSuccess = function (data, status, xhr) {
+	$('body').load('/');
+};
+
+App.Ctrl.Chat.prototype.logoutError = function (xhr, status, error) {
+	console.log(status);
+	console.log(error);
 };
 
 App.Ctrl.Chat.prototype.init = function (opts) {

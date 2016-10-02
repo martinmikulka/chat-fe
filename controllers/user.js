@@ -71,6 +71,15 @@ Ctrl.login = function (req, res) {
 
 
 /**
+ * Perform user logout
+ */
+Ctrl.logout = function (req, res) {
+	req.session.destroy();
+	res.end();
+};
+
+
+/**
  * Perform user registration
  */
 Ctrl.register = function (req, res) {
