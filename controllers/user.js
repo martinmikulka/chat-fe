@@ -16,14 +16,27 @@ Ctrl._getCommonApiOptions = function () {
 	};
 };
 
+Ctrl._apiRequest = function (data, options, cb) {
+	var request = http.request(options, function (response) {
+		var body = '';
+		response.on('data', function (data) {
+			body += data;
+		});
+		response.on('end', function () {
+			body = JSON.parse(body);
+			return cb(body);
+		});
+	});
+
+	request.write(JSON.stringify(data));
+	request.end();
+
+};
+
 /**
  * Perform user login
  */
 Ctrl.login = function (req, res) {
-	var options = Ctrl._getCommonApiOptions();
-	options.path = '/user/login';
-	options.method = 'POST';
-
 	var out = {
 		errors: []
 	};
@@ -42,31 +55,23 @@ Ctrl.login = function (req, res) {
 		return;
 	}
 
-	var request = http.request(options, function (response) {
-		var body = '';
-		response.on('data', function (data) {
-			body += data;
-		});
-		response.on('end', function () {
-			body = JSON.parse(body);
-			if (body.errors) {
-				out.errors = body.errors;
-			} else {
-				req.session.loggedUserId = body.data.id;
-			}
-
-			res.end(JSON.stringify(out));
-			return;
-		});
-	});
+	var options = Ctrl._getCommonApiOptions();
+	options.path = '/user/login';
+	options.method = 'POST';
 
 	var data = {
 		username: req.body.username,
 		password: req.body.password
 	};
 
-	request.write(JSON.stringify(data));
-	request.end();
+	Ctrl._apiRequest(data, options, function (response) {
+		if (response.errors) {
+			out.errors = response.errors;
+		} else {
+			req.session.loggedUserId = response.data.id;
+		}
+		res.end(JSON.stringify(out));
+	});
 };
 
 
@@ -83,10 +88,6 @@ Ctrl.logout = function (req, res) {
  * Perform user registration
  */
 Ctrl.register = function (req, res) {
-	var options = Ctrl._getCommonApiOptions();
-	options.path = '/user';
-	options.method = 'POST';
-
 	var out = {
 		errors: []
 	};
@@ -111,23 +112,9 @@ Ctrl.register = function (req, res) {
 		return;
 	}
 
-	var request = http.request(options, function (response) {
-		var body = '';
-		response.on('data', function (data) {
-			body += data;
-		});
-		response.on('end', function () {
-			body = JSON.parse(body);
-			if (body.errors) {
-				out.errors = body.errors;
-			} else {
-				req.session.loggedUserId = body.data.id;
-			}
-
-			res.end(JSON.stringify(out));
-			return;
-		});
-	});
+	var options = Ctrl._getCommonApiOptions();
+	options.path = '/user';
+	options.method = 'POST';
 
 	var data = {
 		username: req.body.username,
@@ -135,8 +122,15 @@ Ctrl.register = function (req, res) {
 		password_confirm: req.body.password_confirm
 	};
 
-	request.write(JSON.stringify(data));
-	request.end();
+	Ctrl._apiRequest(data, options, function (response) {
+		if (response.errors) {
+			out.errors = response.errors;
+		} else {
+			req.session.loggedUserId = response.data.id;
+		}
+
+		res.end(JSON.stringify(out));
+	});
 };
 
 module.exports = Ctrl;
