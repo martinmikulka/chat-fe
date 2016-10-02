@@ -52,7 +52,7 @@ Ctrl.login = function (req, res) {
 			if (body.errors) {
 				out.errors = body.errors;
 			} else {
-				// TODO Process logged-in user.
+				req.session.loggedUserId = body.data.id;
 			}
 
 			res.end(JSON.stringify(out));

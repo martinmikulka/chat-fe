@@ -1,11 +1,25 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
+var session = require('express-session');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-app.use(express.static('public'));
 
+/**
+ * Setup sessions
+ */
+app.use(session({
+	name: 'sessionId',
+	resave: false,
+	saveUninitialized: false,
+	secret: 'X3CcH9'
+}));
+
+
+/**
+ * Setup templating engine
+ */
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs' }));
 app.set('view engine', 'hbs');
 
@@ -13,11 +27,17 @@ app.set('view engine', 'hbs');
 /**
  * Routes
  */
+app.use(express.static('public'));
+
 var user = require('./routes/user');
 app.use('/user', user);
 
 app.get('/', function (req, res) {
-	res.render('index');
+	if (req.session.loggedUserId) {
+		res.render('chat');
+	} else {
+		res.render('index');
+	}
 });
 app.get('/chat', function (req, res) {
 	res.render('chat');
