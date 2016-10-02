@@ -11,8 +11,17 @@ App.Ctrl.Chat.prototype.init = function (opts) {
 	this.socket = io();
 	this.socket.on('chat_message', this.displayMessage.bind(this));
 
+	if (!(opts && opts.container)) {
+		return console.error('Chat container DOM identifier not specified.');
+	}
+
+	var container = $('#' + opts.container);
+	if (!container.length) {
+		return console.error('Chat container does not exist in DOM. Create element with id=' + opts.container + '.');
+	}
+
 	this.elements = {
-		container: $('#' + opts.container),
+		container: container,
 		window: $('<div id="ChatWindow"></div>'),
 		input: $('<form id="ChatInput" autocomplete="off"><input type="text" name="message" /></form>')
 	};
