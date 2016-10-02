@@ -42,6 +42,9 @@ app.get('/', function (req, res) {
 app.get('/chat', function (req, res) {
 	res.render('chat');
 });
+app.get('/registration', function (req, res) {
+	res.render('registration');
+});
 
 
 /**

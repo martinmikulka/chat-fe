@@ -4,6 +4,9 @@ App.Ctrl = App.Ctrl || {};
 App.Ctrl.Index = function () {
 	this.formLogin = $('#FormLogin');
 	this.formLogin.on('submit', this.loginSubmit.bind(this));
+
+	this.btnRegistration = $('#BtnRegistration');
+	this.btnRegistration.on('click', function () { $('body').load('/registration'); return false; });
 };
 
 App.Ctrl.Index.prototype.loginSubmit = function (ev) {

@@ -7,6 +7,7 @@ var user = require('../controllers/user');
 
 router.post('/', parser, user.register);
 router.post('/login', parser, user.login);
+router.post('/register', parser, user.register);
 router.get('/logout', user.logout);
 
 module.exports = router;

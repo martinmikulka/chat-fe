@@ -1,0 +1,27 @@
+<div id="Registration">
+	<form action="/user/register" method="post" id="FormRegistration">
+		<label for="FormRegistrationUsername">
+			<input type="text" id="FormRegistrationUsername" name="username" placeholder="Username..." />
+			<div class="errmsg"></div>
+		</label>
+		<label for="FormRegistrationPassword">
+			<input type="password" id="FormRegistrationPassword" name="password" placeholder="Password..." />
+			<div class="errmsg"></div>
+		</label>
+		<label for="FormRegistrationPasswordConfirm">
+			<input type="password" id="FormRegistrationPasswordConfirm" name="password_confirm" placeholder="Password confirmation..." />
+			<div class="errmsg"></div>
+		</label>
+		<div class="errmsg"></div>
+		<button type="submit">Register</button>
+	</form>
+
+	<div><a id="BtnLogin" href="#">Return to Login page.</div>
+</div>
+
+<script src="/js/ctrl/registration.js"></script>
+<script>
+	$(document).ready(function () {
+		new App.Ctrl.Registration();
+	});
+</script>
