@@ -1,10 +1,13 @@
 <div id="Chat">
 	<h1>Welcome to Simple chat!</h1>
+
+	<div id="ChatContainer"></div>
 </div>
 
+<script src="/socket.io/socket.io.js"></script>
 <script src="/js/ctrl/chat.js"></script>
 <script>
 	$(document).ready(function () {
-		new App.Ctrl.Chat();
+		new App.Ctrl.Chat({ container: 'ChatContainer' });
 	});
 </script>
