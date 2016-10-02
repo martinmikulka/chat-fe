@@ -10,8 +10,8 @@ App.Ctrl.Index = function () {
 };
 
 App.Ctrl.Index.prototype.loginSubmit = function (ev) {
-	var url = this.formLogin.attr('action') || '/';
-	var method = this.formLogin.attr('method') || 'get';
+	var url = this.formLogin.attr('action') || '/user/login';
+	var method = this.formLogin.attr('method') || 'post';
 	$.ajax({
 		url: url,
 		method: method,

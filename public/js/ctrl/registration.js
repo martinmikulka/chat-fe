@@ -10,8 +10,8 @@ App.Ctrl.Registration = function () {
 };
 
 App.Ctrl.Registration.prototype.registrationSubmit = function (ev) {
-	var url = this.formRegistration.attr('action') || '/';
-	var method = this.formRegistration.attr('method') || 'get';
+	var url = this.formRegistration.attr('action') || '/user/register';
+	var method = this.formRegistration.attr('method') || 'post';
 	$.ajax({
 		url: url,
 		method: method,
