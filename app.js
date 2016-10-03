@@ -27,7 +27,7 @@ app.set('view engine', 'hbs');
 /**
  * Routes
  */
-app.use(express.static('public'));
+app.use(express.static('public/dist'));
 
 var user = require('./routes/user');
 app.use('/user', user);
