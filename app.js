@@ -40,10 +40,10 @@ app.get('/', function (req, res) {
 	}
 });
 app.get('/chat', function (req, res) {
-	res.render('chat');
+	res.render('chat', {layout: false});
 });
 app.get('/registration', function (req, res) {
-	res.render('registration');
+	res.render('registration', {layout: false});
 });
 
 
