@@ -59,9 +59,11 @@ App.Ctrl.Chat.prototype.init = function (opts) {
 
 App.Ctrl.Chat.prototype.sendMessage = function (ev) {
 	var $input = this.elements.input.find('[name="message"]');
-	this.socket.emit('chat_message', $input.val());
-	this.displayMessage($input.val(), true);
-	$input.val('');
+	if ($input.val()) {
+		this.socket.emit('chat_message', $input.val());
+		this.displayMessage($input.val(), true);
+		$input.val('');
+	}
 	return false;
 };
 
