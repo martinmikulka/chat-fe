@@ -1,7 +1,7 @@
 /*
 chat v1.0.0
 Author: Martin Mikulka
-Date: 2016-10-04
+Date: 2016-10-05
 */
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
 /**
@@ -494,7 +494,6 @@ html body h1 {
 #Chat #ChatContainer #ChatWindow {
   bottom: 40px;
   position: absolute;
-  max-height: 100%;
   overflow-y: auto;
   width: 100%;
 }

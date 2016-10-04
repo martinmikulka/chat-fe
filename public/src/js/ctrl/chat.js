@@ -50,8 +50,10 @@ App.Ctrl.Chat.prototype.init = function (opts) {
 
 	this.elements.container
 		.append(this.elements.window)
-		.append(this.elements.input)
-		.height($('body').height());
+		.append(this.elements.input);
+
+	this.elements.container.css('height', $('body').height());
+	this.elements.window.css('max-height', this.elements.container.outerHeight() - this.elements.input.outerHeight());
 
 	this.elements.input.on('submit', this.sendMessage.bind(this));
 	this.elements.input.find('[name="message"]').get(0).focus();
