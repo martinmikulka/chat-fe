@@ -6,7 +6,7 @@ App.Ctrl.Registration = function () {
 	this.formRegistration.on('submit', this.registrationSubmit.bind(this));
 
 	this.btnLogin = $('#BtnLogin');
-	this.btnLogin.on('click', function () { $('body').load('/'); return false; });
+	this.btnLogin.on('click', function () { $('#Main').load('/'); return false; });
 };
 
 App.Ctrl.Registration.prototype.registrationSubmit = function (ev) {
@@ -43,7 +43,7 @@ App.Ctrl.Registration.prototype.registrationSuccess = function (data, status, xh
 			this.formRegistration.children('.errmsg').append('<p>Account already exists. Please choose different username.</p>');
 		}
 	} else {
-		$('body').load('/chat');
+		$('#Main').load('/chat');
 	}
 };
 
