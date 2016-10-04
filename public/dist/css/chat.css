@@ -1,7 +1,7 @@
 /*
 chat v1.0.0
 Author: Martin Mikulka
-Date: 2016-10-03
+Date: 2016-10-04
 */
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
 /**
@@ -370,3 +370,177 @@ textarea {
   /* 2 */
 }
 
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+html {
+  font-family: sans-serif;
+  font-size: 14px;
+  min-height: 100%;
+  position: absolute;
+  width: 100%;
+}
+html body {
+  background: #e0e5e8;
+  color: #44525c;
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+}
+html body a {
+  color: #606390;
+}
+html body a:hover {
+  color: #8184ab;
+}
+html body form {
+  margin-bottom: 20px;
+}
+html body form .errmsg {
+  color: #e00;
+  display: block;
+  line-height: 20px;
+  font-weight: normal;
+  font-size: 0.85rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-transform: initial;
+}
+html body form .errmsg p {
+  margin: 0;
+  padding: 0;
+}
+html body form label {
+  color: #92a3ae;
+  display: block;
+  font-size: 0.80rem;
+  font-weight: bold;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+html body form label:first-child {
+  margin-top: 0;
+}
+html body form button[type="submit"] {
+  background: #24cc36;
+  border: 0;
+  color: #fff;
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+  height: 40px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  width: 100%;
+}
+html body form input {
+  border: 1px solid #c0cad0;
+  display: block;
+  font-size: 1rem;
+  font-weight: normal;
+  height: 40px;
+  line-height: 40px;
+  margin: 5px 0;
+  outline: 0;
+  padding: 5px;
+  width: 100%;
+}
+html body h1 {
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+#Main {
+  background: #eceff1;
+  margin: 0 auto;
+  width: 320px;
+}
+#Login {
+  padding: 20px;
+}
+#Login #BtnRegistration {
+  display: block;
+  text-align: center;
+}
+#Registration {
+  padding: 20px;
+}
+#Registration #BtnLogin {
+  display: block;
+  text-align: center;
+}
+#Chat {
+  position: relative;
+}
+#Chat #BtnLogout {
+  background: url('../img/close.png') no-repeat center center;
+  height: 16px;
+  position: absolute;
+  right: -21px;
+  top: 5px;
+  width: 16px;
+}
+#Chat #BtnLogout .value {
+  display: none;
+}
+#Chat #ChatContainer {
+  position: relative;
+  width: 100%;
+}
+#Chat #ChatContainer #ChatWindow {
+  bottom: 40px;
+  position: absolute;
+  max-height: 100%;
+  overflow-y: auto;
+  width: 100%;
+}
+#Chat #ChatContainer #ChatWindow .message-box {
+  margin: 10px;
+  position: relative;
+  overflow: hidden;
+}
+#Chat #ChatContainer #ChatWindow .message-box .message {
+  margin: 0;
+  padding: 10px;
+}
+#Chat #ChatContainer #ChatWindow .message-box .message img {
+  vertical-align: text-bottom;
+}
+#Chat #ChatContainer #ChatWindow .message-box.public {
+  background: url(../img/chat-message-public-bg.png) no-repeat left top;
+  padding-left: 10px;
+  margin-right: 40px;
+}
+#Chat #ChatContainer #ChatWindow .message-box.public .message {
+  float: left;
+  border-radius: 0 5px 5px 5px;
+  background: #fff;
+}
+#Chat #ChatContainer #ChatWindow .message-box.local {
+  background: url(../img/chat-message-local-bg.png) no-repeat right top;
+  padding-right: 10px;
+  margin-left: 40px;
+}
+#Chat #ChatContainer #ChatWindow .message-box.local .message {
+  float: right;
+  border-radius: 5px 0 5px 5px;
+  background: #d4dce0;
+}
+#Chat #ChatContainer #ChatInput {
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+#Chat #ChatContainer #ChatInput input {
+  background: #fff url(../img/input-bg.png) repeat-x center top;
+  border: 0;
+  margin: 0;
+  padding: 10px;
+  outline: 0;
+}

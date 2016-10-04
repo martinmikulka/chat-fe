@@ -50,7 +50,8 @@ App.Ctrl.Chat.prototype.init = function (opts) {
 
 	this.elements.container
 		.append(this.elements.window)
-		.append(this.elements.input);
+		.append(this.elements.input)
+		.height($('body').height());
 
 	this.elements.input.on('submit', this.sendMessage.bind(this));
 	this.elements.input.find('[name="message"]').get(0).focus();
@@ -66,8 +67,9 @@ App.Ctrl.Chat.prototype.sendMessage = function (ev) {
 
 App.Ctrl.Chat.prototype.displayMessage = function (message, local) {
 	message = message.replace(/\:(-)?\)/g, '<img src="/img/smile.png" />');
-	$('<p>' + message + '</p>')
-		.addClass('message')
+	$('<div></div>')
+		.addClass('message-box')
 		.addClass(local ? 'local' : 'public')
+		.append('<span class="message">' + message + '</span>')
 		.appendTo(this.elements.window);
 };
