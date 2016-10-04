@@ -8,6 +8,9 @@ App.Ctrl.Chat = function (opts) {
 
 	this.btnLogout = $('#BtnLogout');
 	this.btnLogout.on('click', this.logoutSubmit.bind(this));
+
+	this.resizeTimer;
+	$(window).on('resize', this.resizeHandler.bind(this));
 };
 
 App.Ctrl.Chat.prototype.logoutSubmit = function () {
@@ -52,8 +55,7 @@ App.Ctrl.Chat.prototype.init = function (opts) {
 		.append(this.elements.window)
 		.append(this.elements.input);
 
-	this.elements.container.css('height', $('body').height());
-	this.elements.window.css('max-height', this.elements.container.outerHeight() - this.elements.input.outerHeight());
+	this.calculateHeights();
 
 	this.elements.input.on('submit', this.sendMessage.bind(this));
 	this.elements.input.find('[name="message"]').get(0).focus();
@@ -76,4 +78,19 @@ App.Ctrl.Chat.prototype.displayMessage = function (message, local) {
 		.addClass(local ? 'local' : 'public')
 		.append('<span class="message">' + message + '</span>')
 		.appendTo(this.elements.window);
+};
+
+App.Ctrl.Chat.prototype.resizeHandler = function () {
+	clearTimeout(this.resizeTimer);
+	this.resizeTimer = setTimeout(this.calculateHeights.bind(this), 100);
+}
+
+App.Ctrl.Chat.prototype.calculateHeights = function () {
+	// reset container height first to be able to calculate new document height properly
+	this.elements.container
+		.css('height', 0)
+		.css('height', $(document).height());
+	this.elements.window
+		.css('max-height', this.elements.container.outerHeight() - this.elements.input.outerHeight())
+		.css('bottom', 40);
 };
