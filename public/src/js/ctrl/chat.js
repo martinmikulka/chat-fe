@@ -67,6 +67,8 @@ App.Ctrl.Chat.prototype.sendMessage = function (ev) {
 		this.socket.emit('chat_message', $input.val());
 		this.displayMessage($input.val(), true);
 		$input.val('');
+		// scroll chat window down to maximum only after own message
+		this.elements.window.scrollTop(this.elements.window.height());
 	}
 	return false;
 };
