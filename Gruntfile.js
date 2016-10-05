@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 			all: {
 				src: [
 					'./public/lib/jquery/jquery-3.1.1.min.js',
-					'./public/src/js/ctrl/*.js',
+					'./public/src/js/**/*.js',
 				],
 				dest: './public/dist/js/<%= pkg.name %>.min.js'
 			}
