@@ -23,7 +23,11 @@ Ctrl._apiRequest = function (data, options, cb) {
 			body += data;
 		});
 		response.on('end', function () {
-			body = JSON.parse(body);
+			if (response.statusCode == 200 || response.statusCode == 400) {
+				body = JSON.parse(body);
+			} else {
+				body = { errors: 'E_SERVICE_ERROR' };
+			}
 			return cb(body);
 		});
 	});
