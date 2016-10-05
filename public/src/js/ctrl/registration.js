@@ -41,6 +41,8 @@ App.Ctrl.Registration.prototype.registrationSuccess = function (data, status, xh
 		}
 		if (data.errors.indexOf('E_USERNAME_EXISTS') !== -1) {
 			this.formRegistration.children('.errmsg').append('<p>Account already exists. Please choose different username.</p>');
+		} else if (data.errors.indexOf('E_SERVICE_ERROR') !== -1) {
+			this.registrationError();
 		}
 	} else {
 		App.loadPage('/chat');

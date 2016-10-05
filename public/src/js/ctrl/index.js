@@ -37,6 +37,8 @@ App.Ctrl.Index.prototype.loginSuccess = function (data, status, xhr) {
 			this.formLogin.children('.errmsg').append('<p>User account does not exist.</p>');
 		} else if (data.errors.indexOf('E_AUTHENTICATION_FAILED') !== -1) {
 			this.formLogin.children('.errmsg').append('<p>Incorrect password.</p>');
+		} else if (data.errors.indexOf('E_SERVICE_ERROR') !== -1) {
+			this.loginError();
 		}
 	} else {
 		App.loadPage('/chat');
