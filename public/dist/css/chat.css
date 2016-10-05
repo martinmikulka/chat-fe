@@ -459,10 +459,10 @@ html body h1 {
   margin: 0 auto;
   width: 320px;
 }
-#Login {
+#Index {
   padding: 20px;
 }
-#Login #BtnRegistration {
+#Index #BtnRegistration {
   display: block;
   text-align: center;
 }
