@@ -455,6 +455,26 @@ html body h1 {
   padding: 0;
   text-align: center;
 }
+html body .flash-message {
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+html body .flash-message.error {
+  background: #ffc1c1;
+  color: #800;
+}
+html body .flash-message.success {
+  background: #c1ffc1;
+  color: #080;
+}
+html body .flash-message.info {
+  background: #bfedff;
+  color: #005c80;
+}
 #Main {
   background: #eceff1;
   margin: 0 auto;
