@@ -6,7 +6,7 @@ App.Ctrl.Index = function () {
 	this.formLogin.on('submit', this.loginSubmit.bind(this));
 
 	this.btnRegistration = $('#BtnRegistration');
-	this.btnRegistration.on('click', function () { $('#Main').load('/registration'); return false; });
+	this.btnRegistration.on('click', function () { return App.loadPage('/registration'); });
 };
 
 App.Ctrl.Index.prototype.loginSubmit = function (ev) {
@@ -39,7 +39,7 @@ App.Ctrl.Index.prototype.loginSuccess = function (data, status, xhr) {
 			this.formLogin.children('.errmsg').append('<p>Incorrect password.</p>');
 		}
 	} else {
-		$('#Main').load('/chat');
+		App.loadPage('/chat');
 	}
 };
 

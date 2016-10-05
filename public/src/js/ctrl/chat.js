@@ -24,7 +24,7 @@ App.Ctrl.Chat.prototype.logoutSubmit = function () {
 };
 
 App.Ctrl.Chat.prototype.logoutSuccess = function (data, status, xhr) {
-	$('#Main').load('/chat');
+	App.loadPage('/chat');
 };
 
 App.Ctrl.Chat.prototype.logoutError = function (xhr, status, error) {
