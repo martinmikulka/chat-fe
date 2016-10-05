@@ -20,7 +20,7 @@ app.use(session({
 /**
  * Setup templating engine
  */
-app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs' }));
+app.engine('hbs', exphbs({ defaultLayout: false, extname: 'hbs' }));
 app.set('view engine', 'hbs');
 
 
@@ -33,14 +33,14 @@ var user = require('./routes/user');
 app.use('/user', user);
 
 app.get('/', function (req, res) {
+	res.render('index', { layout: 'main' });
+});
+app.get('/chat', function (req, res) {
 	if (req.session.loggedUserId) {
 		res.render('chat');
 	} else {
 		res.render('index');
 	}
-});
-app.get('/chat', function (req, res) {
-	res.render('chat', {layout: false});
 });
 app.get('/registration', function (req, res) {
 	res.render('registration', {layout: false});

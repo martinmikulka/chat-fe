@@ -6,7 +6,7 @@ App.Ctrl.Registration = function () {
 	this.formRegistration.on('submit', this.registrationSubmit.bind(this));
 
 	this.btnLogin = $('#BtnLogin');
-	this.btnLogin.on('click', function () { $('#Main').load('/'); return false; });
+	this.btnLogin.on('click', function () { $('#Main').load('/chat'); return false; });
 };
 
 App.Ctrl.Registration.prototype.registrationSubmit = function (ev) {
