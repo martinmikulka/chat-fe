@@ -40,3 +40,7 @@ App.flashMessage = function (msg, type) {
 		}, delay);
 	});
 };
+
+App.cleanFormErrors = function (form) {
+	form.find('.errmsg').empty();
+};

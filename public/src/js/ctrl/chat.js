@@ -18,7 +18,7 @@ App.Ctrl.Chat.prototype.logoutSubmit = function () {
 		url: '/user/logout',
 		method: 'get',
 		success: this.logoutSuccess.bind(this),
-		error: this.logoutError.bind(this)
+		error: this.logoutError
 	});
 	return false;
 };
@@ -28,8 +28,7 @@ App.Ctrl.Chat.prototype.logoutSuccess = function (data, status, xhr) {
 };
 
 App.Ctrl.Chat.prototype.logoutError = function (xhr, status, error) {
-	console.log(status);
-	console.log(error);
+	App.flashMessage('Error occured when calling logout service. Sorry.', 'error');
 };
 
 App.Ctrl.Chat.prototype.init = function (opts) {

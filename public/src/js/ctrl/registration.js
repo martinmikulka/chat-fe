@@ -18,13 +18,13 @@ App.Ctrl.Registration.prototype.registrationSubmit = function (ev) {
 		data: this.formRegistration.serialize(),
 		datatype: 'json',
 		success: this.registrationSuccess.bind(this),
-		error: this.registrationError.bind(this)
+		error: this.registrationError
 	});
 	return false;
 };
 
 App.Ctrl.Registration.prototype.registrationSuccess = function (data, status, xhr) {
-	this.cleanErrors(this.formRegistration);
+	App.cleanFormErrors(this.formRegistration);
 	data = JSON.parse(data);
 	if (data.errors.length) {
 		if (data.errors.indexOf('E_USERNAME_EMPTY') !== -1) {
@@ -48,10 +48,5 @@ App.Ctrl.Registration.prototype.registrationSuccess = function (data, status, xh
 };
 
 App.Ctrl.Registration.prototype.registrationError = function (xhr, status, error) {
-	console.log(status);
-	console.log(error);
-};
-
-App.Ctrl.Registration.prototype.cleanErrors = function (form) {
-	form.find('.errmsg').empty();
+	App.flashMessage('Error occured when calling registration service. Sorry.', 'error');
 };

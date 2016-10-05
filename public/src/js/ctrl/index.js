@@ -18,13 +18,13 @@ App.Ctrl.Index.prototype.loginSubmit = function (ev) {
 		data: this.formLogin.serialize(),
 		datatype: 'json',
 		success: this.loginSuccess.bind(this),
-		error: this.loginError.bind(this)
+		error: this.loginError
 	});
 	return false;
 };
 
 App.Ctrl.Index.prototype.loginSuccess = function (data, status, xhr) {
-	this.cleanErrors(this.formLogin);
+	App.cleanFormErrors(this.formLogin);
 	data = JSON.parse(data);
 	if (data.errors.length) {
 		if (data.errors.indexOf('E_USERNAME_EMPTY') !== -1) {
@@ -44,10 +44,5 @@ App.Ctrl.Index.prototype.loginSuccess = function (data, status, xhr) {
 };
 
 App.Ctrl.Index.prototype.loginError = function (xhr, status, error) {
-	console.log(status);
-	console.log(error);
-};
-
-App.Ctrl.Index.prototype.cleanErrors = function (form) {
-	form.find('.errmsg').empty();
+	App.flashMessage('Error occured when calling login service. Sorry.', 'error');
 };
