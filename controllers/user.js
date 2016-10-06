@@ -1,5 +1,6 @@
 var express = require('express');
 var http = require('http');
+var config = require('../config');
 
 var Ctrl = {};
 
@@ -8,14 +9,17 @@ var Ctrl = {};
  */
 Ctrl._getCommonApiOptions = function () {
 	return {
-		hostname: 'www.chatbe.dev', // TODO put into some config
+		hostname: config.api.hostname,
 		headers: {
 			'Content-Type': 'application/json',
-			'Authorization': 'chatbe_mp2nXGw3HZNAYS3b' // TODO put into some config
+			'Authorization': config.api.authkey
 		}
 	};
 };
 
+/**
+ * Send HTTP request.
+ */
 Ctrl._apiRequest = function (data, options, cb) {
 	var request = http.request(options, function (response) {
 		var body = '';
