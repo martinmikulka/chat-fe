@@ -43,7 +43,7 @@ app.get('/chat', function (req, res) {
 	}
 });
 app.get('/registration', function (req, res) {
-	res.render('registration', {layout: false});
+	res.render('registration');
 });
 
 
