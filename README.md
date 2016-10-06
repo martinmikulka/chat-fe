@@ -74,3 +74,8 @@ There is dedicated router for user related actions. Router calls methods from th
 ####Login and Registration
 
 Both actions share the same concept. At first, the basic user input validation is performed. If input passes the validation, the new http.request is set up and sent to the [API](https://github.com/martinmikulka/chat-be). When complete response from API is received, it is parsed and processed. Then the response for FE is set and returned.
+
+#Issues and further improvements
+
+- History API should be utilized.
+- Better user input validation should be implemented.
