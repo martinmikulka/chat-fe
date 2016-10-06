@@ -6,7 +6,8 @@ This project is purely for job application purposes. There is almost 100% chance
 
 #Installation
 1. Clone repository
-2. TODO
+2. Setup config
+3. Run application `node app.js`
 
 #Project description
 
@@ -49,6 +50,12 @@ After successful login (or registration) the Chat application is displayed. Chat
 There is a [Grunt](http://gruntjs.com/) installed with tools for LESS to CSS conversion, CSS and JS minification and a watcher.
 
 ##Server
+
+###Configuration
+
+**/config/config.dev.js**
+
+It is necessary to set API hostname and authorization key.
 
 ###Main Application
 
