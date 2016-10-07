@@ -41,7 +41,7 @@ App.Ctrl.Index.prototype.loginSuccess = function (data, status, xhr) {
 			this.loginError();
 		}
 	} else {
-		App.loadPage('/chat');
+		App.loadPage('/');
 	}
 };
 

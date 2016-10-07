@@ -6,7 +6,7 @@ App.Ctrl.Registration = function () {
 	this.formRegistration.on('submit', this.registrationSubmit.bind(this));
 
 	this.btnLogin = $('#BtnLogin');
-	this.btnLogin.on('click', function () { return App.loadPage('/chat'); });
+	this.btnLogin.on('click', function () { return App.loadPage('/'); });
 };
 
 App.Ctrl.Registration.prototype.registrationSubmit = function (ev) {
@@ -45,7 +45,7 @@ App.Ctrl.Registration.prototype.registrationSuccess = function (data, status, xh
 			this.registrationError();
 		}
 	} else {
-		App.loadPage('/chat');
+		App.loadPage('/');
 	}
 };
 

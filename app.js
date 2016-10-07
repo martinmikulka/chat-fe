@@ -49,9 +49,6 @@ var user = require('./routes/user');
 app.use('/user', user);
 
 app.get('/', function (req, res) {
-	res.render('index', req.renderOptions);
-});
-app.get('/chat', function (req, res) {
 	if (req.session.loggedUserId) {
 		res.render('chat', req.renderOptions);
 	} else {
