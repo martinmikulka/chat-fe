@@ -7,6 +7,22 @@ var io = require('socket.io')(http);
 
 
 /**
+ * Rendering options middleware
+ */
+var renderOptions = function (req, res, next) {
+	req.renderOptions = {};
+
+	// Disable rendering of layout for XMLHttpRequest
+	if (req.xhr) {
+		req.renderOptions.layout = false;
+	}
+
+	next();
+}
+app.use(renderOptions);
+
+
+/**
  * Setup sessions
  */
 app.use(session({
@@ -20,7 +36,7 @@ app.use(session({
 /**
  * Setup templating engine
  */
-app.engine('hbs', exphbs({ defaultLayout: false, extname: 'hbs' }));
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs' }));
 app.set('view engine', 'hbs');
 
 
@@ -33,17 +49,17 @@ var user = require('./routes/user');
 app.use('/user', user);
 
 app.get('/', function (req, res) {
-	res.render('index', { layout: 'main' });
+	res.render('index', req.renderOptions);
 });
 app.get('/chat', function (req, res) {
 	if (req.session.loggedUserId) {
-		res.render('chat');
+		res.render('chat', req.renderOptions);
 	} else {
-		res.render('index');
+		res.render('index', req.renderOptions);
 	}
 });
 app.get('/registration', function (req, res) {
-	res.render('registration');
+	res.render('registration', req.renderOptions);
 });
 
 
